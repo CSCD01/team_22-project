@@ -37,6 +37,15 @@ There were five issues in total.
 - Issue [11154](./11154.md)
 - Issue [11259](./11259.md)
 
+#### Reason: 
+The reason we choose these 3 selected issues to implement is shown below.
+
+1. For 11658, it's a common error that users will meet during the usage of viewing pdf file. By preserving the exception type, more fine-grained error handling could be performed via client-side logic
+
+2. For 11154, it's a feature that request a optimization to the horizontal scrolling.
+
+3. For 11259, the size is small and will be directly used by users.
+
 Each document of issues has details listed below:
 
 - **Description**: Clear and detailed explanation of bugs from the issue list. The problem will be shown in words or in pictures as well as any related events.
