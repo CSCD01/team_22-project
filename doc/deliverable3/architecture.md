@@ -20,7 +20,10 @@ The view layer is built on the display layer and constructs the UI for the PDF v
 ## Design Pattern and Principles
 
 ### Factory Design Pattern
-Factory Design Pattern is used throughout the application. For example: [class PDFFunctionFactory](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/src/core/function.js#L26) in `src/core/function.js` creates and returns `PDFFunction` objects.
+Factory Design Pattern is used throughout the application. For example: 
+- [class PDFFunctionFactory](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/src/core/function.js#L26) in `src/core/function.js` creates any `PDFFunction` that is used in multiple `core` files, such as functions in `image.js` taking `pdfFunctionFactory` for [building images](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/src/core/image.js#L99).
+- In `src/core/annotation.js` and `src/display/annotation_layer.js` the class called AnnotationFactory can create any type of annotation.
+- In `src/display/annotation_layer.js` the class called [AnnotationElementFactory](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/src/display/annotation_layer.js#L47) can create any type of annotation element.
 
 ### DRY (Don't Repeat Yourself) Principle
 For example: `/share` folder holds constants and functions shared between the core and viewer layer.
