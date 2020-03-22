@@ -4,6 +4,8 @@ PDF.js is structured such that there is a clear division of subtasks. These divi
 ## Layered Architecture
 The layered architecture organizes components into layers, where each layer has one specific responsibility in the application.
 
+<img src="./img/layers.png" alt="Layers Architecture" width="200"/>
+
 ### Core Layer
 The core layer is responsible for interpreting and parsing binary PDF contents, which is the foundation for which all subsequent layers are built on.
 
@@ -19,4 +21,6 @@ The view layer is built on the display layer and constructs the UI for the PDF v
 Factory Design Pattern is used throughout the application. For example: [class PDFFunctionFactory](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/src/core/function.js#L26) in `src/core/function.js` creates and returns `PDFFunction` objects.
 
 ### DRY (Don't Repeat Yourself) Principle
+For example: `/share` folder holds constants and functions shared between the core and viewer layer.
 
+<img src="./img/deliverable3.png" alt="High level UML including relavent classes" width="800"/>
