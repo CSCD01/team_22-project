@@ -2,7 +2,7 @@
 PDF.js is structured such that there is a clear division of subtasks. These divisions, named core, display and viewer, are layered such that each layer provides information/services to the next layer.
 
 ## Layered Architecture
-The layered architecture organizes components into layers, where each layer has one specific responsibility in the application.
+The layered architecture organizes components into layers, where each layer has one specific responsibility in the application. This architecture results in each layer being highly cohesive with minimal coupling.
 
 <img src="./img/layers.png" alt="Layers Architecture" width="500"/>
 
@@ -14,6 +14,8 @@ The display layer takes information sent from the core layer and uses API to ren
 
 ### Viewer Layer
 The view layer is built on the display layer and constructs the UI for the PDF viewer. It supports a variety of features, such as searching, rotating, printing...etc
+
+----------------------------------------------------
 
 ## Design Pattern and Principles
 
