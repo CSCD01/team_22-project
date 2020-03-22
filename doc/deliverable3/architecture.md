@@ -4,7 +4,7 @@ PDF.js is structured such that there is a clear division of subtasks. These divi
 ## Layered Architecture
 The layered architecture organizes components into layers, where each layer has one specific responsibility in the application.
 
-<img src="./img/layers.png" alt="Layers Architecture" width="200"/>
+<img src="./img/layers.png" alt="Layers Architecture" width="500"/>
 
 ### Core Layer
 The core layer is responsible for interpreting and parsing binary PDF contents, which is the foundation for which all subsequent layers are built on.
@@ -23,4 +23,4 @@ Factory Design Pattern is used throughout the application. For example: [class P
 ### DRY (Don't Repeat Yourself) Principle
 For example: `/share` folder holds constants and functions shared between the core and viewer layer.
 
-<img src="./img/deliverable3.png" alt="High level UML including relavent classes" width="800"/>
+<img src="./img/deliverable3_uml.png" alt="High level UML including relavent classes" width="800"/>
