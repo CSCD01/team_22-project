@@ -18,5 +18,3 @@ And we all voted in team chat and decided to choose [Issue 6347](https://github.
 ## Architecture UML ##
 
 [**High Level Architecture**](./architecture.md)
-
-We also took a more granular look at the components affected both the features we have documented.
