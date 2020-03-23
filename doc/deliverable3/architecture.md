@@ -28,4 +28,7 @@ Factory Design Pattern is used throughout the application. For example:
 ### DRY (Don't Repeat Yourself) Principle
 For example: `/share` folder holds constants and functions shared between the core and viewer layer.
 
+----------------------------------------------------
+
+## Architecture UML
 <img src="./img/deliverable3_uml.png" alt="High level UML including relavent classes" width="800"/>
