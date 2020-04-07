@@ -1,6 +1,6 @@
 # Feature
 
-[10773](./deliverable3/10773.md)
+[10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
 
 ## Description
 
@@ -30,7 +30,7 @@ What we did is that, add support for "view" parameter for opening PDF files on w
 
 ## Location in Code
 
-![UML](./deliverable3/img/10773_UML.png)
+![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_UML.png)
 
 ## Design of code
 
@@ -59,7 +59,7 @@ Here we need to make y position changed  based on page height.
 
 Second, 
 
-in [web/pdf_link_service.js] (https://github.com/mozilla/pdf.js/blob/master/web/pdf_link_service.js)
+in [web/pdf_link_service.js](https://github.com/mozilla/pdf.js/blob/master/web/pdf_link_service.js)
 
 add code inside of `setHash` function:
 
