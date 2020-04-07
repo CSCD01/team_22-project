@@ -26,11 +26,15 @@ In this deliverable out team need to finish several missions: Each issue's analy
 
 This step and **Analyzing** took us long time to complete, due to this part was done in previous deliverable 3. Each member in team got their own tasks: first we need to go through each features/issues in pdf.js and found the most interesting and high-level features to work on, then we still need to complete the documentation with analyzing the features' properties. Also, we have to draw the overal UML diagram for us to understand this project more, which could help us achieve the goal with deeper comprehensice and efficiency.
 
+Our team usually have meetings in Messenger twice a week, including texting and voice discussing. In the meeting, we decided the method to find issues/features to work on in pdf.js issues list (where the lable tag is [2-feature](https://github.com/mozilla/pdf.js/issues?q=is%3Aopen+is%3Aissue+label%3A2-feature))
+
+We choose the most recent 30 issues related to feature tag in list to review. Each member will have 12 issues to tae a look at in total, which means every two members will have 6 issues that is duplicated with each other. This reviewing way makes sure that each issues will be evaluated by two people in case od misunderstand. After reviewing, each member will need to come up with two issus that best fit to our goal, the our team will vote for the best 3 issues in the selected 10 issues.
+
 There were 3 features we choose to do deep analysis:
 
-- Issue [6347](./deliverable3/6347.md)
-- Issue [7442](./deliverable3/7442.md)
-- Issue [10773](./deliverable3/10773.md)
+- Issue [6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
+- Issue [7442](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/7442.md)
+- Issue [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
 
 #### Reason: 
 The reason we choose these 3 selected issues to analysis is shown below.
@@ -82,6 +86,8 @@ The screenshot of our team's Kanban board in this step is attached below.
 This part is the most important step in deliverable 4, our goal is to make the features we choose in previous deliverable bacome available for users in pdf.js. 
 
 During the programming process, if members find out the soluction in completing the features, then they could do the actual changes in project's source code after creating a new branch dedicated to the fix. And in this time, it's fine that if one or two of our found features are not available for us to resolve, due to in deliverable 4, we only need to finish and implement at least one features to the project. This rule makes us be free to choose any doable issue/feature. 
+
+So in this part, our team also did a vote in weekly meeting to decide which feature to select in next processing part. As a result, we picked feature 6347 and 10773 to continue. Due to those are based on factory design pattern and high-level enough for our team to complete.
 
 **Attention** is that every changes will be made in their own local repository and there will be no effect to the master branch of project in Github.
 
