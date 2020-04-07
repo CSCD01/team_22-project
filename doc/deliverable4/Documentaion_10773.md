@@ -34,30 +34,7 @@ What we did is that, add support for "view" parameter for opening PDF files on w
 
 ## Design of code
 
-First, we do this in three lines inside of [web/base_viewer.js](https://github.com/mozilla/pdf.js/blob/master/web/base_viewer.js)
-
-```
-y = pageHeight - destArray[3];
-```
-
-instead of 
-
-```
-y = destArray[3];
-```
-
-Due to
-
-```
-const pageHeight =
-      (changeOrientation ? pageView.width : pageView.height) /
-      pageView.scale /
-      CSS_UNITS;
-```
-
-Here we need to make y position changed  based on page height.
-
-Second, 
+First, 
 
 in [web/pdf_link_service.js](https://github.com/mozilla/pdf.js/blob/master/web/pdf_link_service.js)
 
@@ -146,7 +123,53 @@ if ("zoom" in params) {
         }
       }
 ```
+And here, we also delete the duplicate part based on project advisors' suggestion:
+```
+if (zoomArg === "Fit" || zoomArg === "FitB") {
+            dest = [null, { name: zoomArg }];
+          } else if (
+            zoomArg === "FitH" ||
+            zoomArg === "FitBH" ||
+            zoomArg === "FitV" ||
+            zoomArg === "FitBV"
+          ) {
+            dest = [
+              null,
+              { name: zoomArg },
+              zoomArgs.length > 1 ? zoomArgs[1] | 0 : null,
+            ];
+          } else if (zoomArg === "FitR") {
+```
 
+Second, we need to add script that when the horizontal/vertical scaling differs significantly, also scale even single-char text to improve highlighting in [display/text_layer.js](https://github.com/mozilla/pdf.js/blob/master/src/display/text_layer.js):
+
+```
+let shouldScaleText = false;
+    if (geom.str.length > 1) {
+      shouldScaleText = true;
+    } else if (geom.transform[0] !== geom.transform[3]) {
+      const absScaleX = Math.abs(geom.transform[0]),
+        absScaleY = Math.abs(geom.transform[3]);
+      if (
+        absScaleX !== absScaleY &&
+        Math.max(absScaleX, absScaleY) / Math.min(absScaleX, absScaleY) > 1.5
+      ) {
+        shouldScaleText = true;
+      }
+    }
+    if (shouldScaleText) {
+```
+
+Finally, add the fixed feature into [test/pdfs/.gitignore](https://github.com/mozilla/pdf.js/blob/master/test/pdfs/.gitignore#146) and [test/test_manifest.json](https://github.com/mozilla/pdf.js/blob/master/test/test_manifest.json#L1110)
+
+```
+{  "id": "issue11713",
+       "file": "pdfs/issue11713.pdf",
+       "md5": "bafe5801234feeb95969da106f2ce6d8",
+       "rounds": 1,
+       "type": "text"
+    }
+```
 
 ## User Guide
 
