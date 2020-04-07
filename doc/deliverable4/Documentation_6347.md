@@ -1,6 +1,6 @@
 # Feature
 
-[6347](./deliverable3/6347.md)
+[6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
 
 ## Description
 
@@ -22,7 +22,7 @@ Add the ability to handle images within a PDF document as if they were images in
 
 ## Location in Code
 
-![UML](./deliverable3/img/6347_UML.png)
+![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/6347_UML.png)
 
 ## Design of code
 
@@ -32,6 +32,6 @@ Add the ability to handle images within a PDF document as if they were images in
 
 When viewing a pdf file, users can move their mouse to some pictures inside of the file and right click to save the chosen file. Or click the chosen picture, and users could copy and paste pictures as well.
 
-![pic1](./img/pic_1.png)
+<img src="./img/pic_1.png" alt="pic1" width="400"/>
 
-![pic2](./img/pic_2.png)
+<img src="./img/pic_2.png" alt="pic2" width="400"/>
