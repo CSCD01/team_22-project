@@ -2,8 +2,11 @@
 
 [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
 
+We switched to this feature after `#6347`. We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
+
 ## Description
 
+### 10773
 ```
 view=Fit
 view=FitH
@@ -28,20 +31,38 @@ Currently, the view parameter in PDF URL fragment identifiers is currently unsup
 
 What we did is that, add support for "view" parameter for opening PDF files on web following Adobe Acrobat SDk documentation. This parameter would set the view of the displayed page, using the keyword values defined in the PDF language specification. 
 
-## Location in Code
+### 2843
+According to the open parameter specification, [link](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_open_parameters_v9.pdf#page=6), the zoom parameter should be implemented as: `zoom=scale,left,top`, with the interpretation:
 
-![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_UML.png)
+> Scroll values _left_ and _top_ are in a coordinate system where 0,0 represents the top left corner of the visible page, regardless of document rotation.
 
-## Design of code
+This is not the case in pdf.js, which is a problem if you try opening the following:
+http://mozilla.github.io/pdf.js/web/viewer.html#page=2&zoom=auto,0,0
 
-First, 
+* Expected result: The document should open at the top of page 2, as it does with Adobe Reader.
+* What actually happens: The document is scrolled down to the top of page 3.
+ 
+The problem seems to be that in pdf.js the origin in the coordinate system (the one that is exposed to the user) is placed at the bottom left corner. From what I've gathered, pdf.js internally uses a coordinate system placed at the top left corner of the page, so I don't know why it's not working.
+I'm not that familiar with this part of the codebase, but could the issue be here:
+https://github.com/mozilla/pdf.js/blob/master/src/util.js#L390
 
-in [web/pdf_link_service.js](https://github.com/mozilla/pdf.js/blob/master/web/pdf_link_service.js)
+
+## Design in Code
+
+![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable4/img/10773_UML_2.png)
+
+## Implementation
+
+The related [Pull Request](https://github.com/mozilla/pdf.js/pull/11786) is created.
+
+### 10773
+
+In [web/pdf_link_service.js](https://github.com/mozilla/pdf.js/blob/master/web/pdf_link_service.js)
 
 add code inside of `setHash` function:
 
 ```
-if ("view" in params) {
+      if ("view" in params) {
         const viewArgs = params.view.split(","); // scale,left/top
         const viewArg = viewArgs[0];
 
@@ -69,7 +90,7 @@ if ("view" in params) {
 This aims at build the destination array and make the view of the displayed page available in function, which is similar way as the [zoom](https://github.com/CSCD01/pdf.js-team22/blob/4893b14a522f6aced286d7fd2f4c79dd2807f6f0/web/pdf_link_service.js#L243):
 
 ```
-if ("zoom" in params) {
+      if ("zoom" in params) {
         // Build the destination array.
         const zoomArgs = params.zoom.split(","); // scale,left,top
         const zoomArg = zoomArgs[0];
@@ -123,59 +144,57 @@ if ("zoom" in params) {
         }
       }
 ```
-And here, we also delete the duplicate part based on project advisors' suggestion:
+And here, we also delete the duplicate part in zoom, based on project advisors' suggestion. Then previous FitV, FitH etc. passing through `zoom` is now going through `view` in url.
 ```
-if (zoomArg === "Fit" || zoomArg === "FitB") {
-            dest = [null, { name: zoomArg }];
-          } else if (
-            zoomArg === "FitH" ||
-            zoomArg === "FitBH" ||
-            zoomArg === "FitV" ||
-            zoomArg === "FitBV"
-          ) {
-            dest = [
-              null,
-              { name: zoomArg },
-              zoomArgs.length > 1 ? zoomArgs[1] | 0 : null,
-            ];
-          } else if (zoomArg === "FitR") {
-```
-
-Second, we need to add script that when the horizontal/vertical scaling differs significantly, also scale even single-char text to improve highlighting in [display/text_layer.js](https://github.com/mozilla/pdf.js/blob/master/src/display/text_layer.js):
-
-```
-let shouldScaleText = false;
-    if (geom.str.length > 1) {
-      shouldScaleText = true;
-    } else if (geom.transform[0] !== geom.transform[3]) {
-      const absScaleX = Math.abs(geom.transform[0]),
-        absScaleY = Math.abs(geom.transform[3]);
-      if (
-        absScaleX !== absScaleY &&
-        Math.max(absScaleX, absScaleY) / Math.min(absScaleX, absScaleY) > 1.5
-      ) {
-        shouldScaleText = true;
-      }
-    }
-    if (shouldScaleText) {
+    if (zoomArg === "Fit" || zoomArg === "FitB") {
+      dest = [null, { name: zoomArg }];
+    } else if (
+      zoomArg === "FitH" ||
+      zoomArg === "FitBH" ||
+      zoomArg === "FitV" ||
+      zoomArg === "FitBV"
+    ) {
+      dest = [
+        null,
+        { name: zoomArg },
+        zoomArgs.length > 1 ? zoomArgs[1] | 0 : null,
+      ];
+    } 
 ```
 
-Finally, add the fixed feature into [test/pdfs/.gitignore](https://github.com/mozilla/pdf.js/blob/master/test/pdfs/.gitignore#146) and [test/test_manifest.json](https://github.com/mozilla/pdf.js/blob/master/test/test_manifest.json#L1110)
+Regardless of #2843, the feature for #10773 is now fixed. It meets the PDF standard and the user can set up view to change default fit pattern on web.
 
+### 2843
+After tons of testing, we find out the issue is that in `base_viewer.js` it's [converting](https://github.com/mozilla/pdf.js/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L885-L890) input point to a from-top-left point.
 ```
-{  "id": "issue11713",
-       "file": "pdfs/issue11713.pdf",
-       "md5": "bafe5801234feeb95969da106f2ce6d8",
-       "rounds": 1,
-       "type": "text"
-    }
+    const boundingRect = [
+      pageView.viewport.convertToViewportPoint(x, y),
+      pageView.viewport.convertToViewportPoint(x + width, y + height),
+    ];
+    let left = Math.min(boundingRect[0][0], boundingRect[1][0]);
+    let top = Math.min(boundingRect[0][1], boundingRect[1][1]);
 ```
+Thus, the input value we passed from `pdf_link_service.js` is supposed to be a from-botton-left point. However, from the user point, their input is actually a from-top-left value. Due to that, there is an extra conversion and massed up the position value.
+
+As discussed in [comment](https://github.com/mozilla/pdf.js/issues/10773#issuecomment-610183217), we initially decided to apply and addtional conversion in `base_viewer.js` to make all the position value from-botton-left. But this was rejected by the reviewer, who said this way would affact other part of project so it's not safe and elegent enough. We think that's an reasonable rejection and we accept it.
+
+After that, the other solution we can think about is to have another wrapper out side [base_viewer.js/scrollPageIntoView](https://github.com/mozilla/pdf.js/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L774) to be use by `zoom` and `view` only, but that's still not elegent enough.
+
+We are still keep tracking with the reviewer to get suggestion on what we can do to make this fix.
+
+## Acceptance Testing
+We expect to see the default view of pdf changed base on the parameter pass in. This can be tested by running web part locally with gulp server. To verify, for example, by navigating through the url below from browser:
+```
+http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf
+```
+![before](./img/10773_1.PNG)
+Currently we are going to see above with default setting, but after implementation, we can show below with the view parameter. For example, when fitting horizontally,
+```
+http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf#page=1&view=FitH
+```
+![after](./img/10773_2.PNG)
+We would see above the same pdf is fitted by width by default.
 
 ## User Guide
 
-After the implementation is done, we will have moew options in 
-
-<img src="./img/option_1.png" alt="Option" width="300"/>
-
-like FitH(top), FitV(left), FitB(H)...
-
+After the implementation is done, we will have options in url such as append `#page=1&view=FitV,100` to fit the page vertically with 100px from top.
