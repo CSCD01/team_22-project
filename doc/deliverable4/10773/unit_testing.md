@@ -23,3 +23,47 @@ http://localhost:8888/test/unit/unit_test.html
 The result of all unit tests will be displyed on the page, with green dot indicating passing and red cross mark indicating failures, as shown in the screenshot.
 
 ![Unit test](./img/unit_test.png)
+
+## Test cases
+
+When testing the modified component related to [issue #10773](https://github.com/mozilla/pdf.js/issues/10773), mock class, `BaseViewerMock`, was added in [`test/unit/test_utils.js`]() in order to replicate the behaviour of [`BaseViewer`](https://github.com/CSCD01/pdf.js-team22/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L135).
+
+```
+  class BaseViewerMock {
+    constructor(){
+      this.used = 0;
+      this.x = 0;
+      this.y = 0;
+      this.desName = "";
+    }
+    scrollPageIntoView({
+      pageNumber,
+      destArray = null,
+      allowNegativeOffset = false,
+      ignoreDestinationZoom = false,
+    }){
+      this.used = 1;
+      this.desName = destArray[1].name;
+      var x = destArray[2];
+      this.x = x !== null ? x : 0;
+    } 
+    
+    reset(){
+      this.used = 0;
+      this.x = 0;
+      this.desName = "";
+    }
+
+    getUsed(){
+      return this.used;
+    }
+    
+    getX(){
+      return this.x;
+    }
+
+    getName(){
+      return this.desName;
+    }
+  }
+```
