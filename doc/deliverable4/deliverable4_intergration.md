@@ -36,9 +36,9 @@ We choose the most recent 30 issues related to feature tag in list to review. Ea
 
 There were 3 features we choose to do deep analysis:
 
-- Issue [6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
-- Issue [7442](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/7442.md)
-- Issue [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
+- Issue [6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/6347.md)
+- Issue [7442](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/7442.md)
+- Issue [10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/10773.md)
 
 #### Reason: 
 The reason we choose these 3 selected issues to analysis is shown below.
@@ -133,7 +133,7 @@ The screenshot of our team's Kanban board in this step is attached below.
 
 # Feature 6347
 
-[6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
+[6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/6347.md)
 
 This is our initial choice for deliverable 4. As we see many people commentted this would be an useful feature.
 
@@ -157,7 +157,7 @@ Add the ability to handle images within a PDF document as if they were images in
 
 ## Design of Code
 
-![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/6347_UML.png)
+![UML](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/img/6347_UML.png)
 
 
 ## User Guide
@@ -174,9 +174,9 @@ We spent great amount of time investigating the potential solution for this feat
 
 # Feature 10773
 
-[10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
+[10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/10773.md)
 
-We switched to this feature after [#6347](./Documentaion_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
+We switched to this feature after [#6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable4/Documentation_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
 
 ## Description
 
@@ -198,7 +198,7 @@ Set the view of the displayed page, using the keyword values defined in the PDF 
 
 Steps to get the problem:
 
-1. Check out the repository, run npm install and gulp server, then navigate the viewer to a PDF that isn't automatically zoomed in to fill your viewport width on viewer initialization (http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf works for me).
+1. Check out the repository, run npm install and gulp server, then navigate the viewer to a PDF that isn't automatically zoomed in to fill your viewport width on viewer initialization.
 2. Append #page=1&view=FitH to the URL in the address bar, and reload the page.
 
 Currently, the view parameter in PDF URL fragment identifiers is currently unsupported.
@@ -223,7 +223,7 @@ https://github.com/mozilla/pdf.js/blob/master/src/util.js#L390
 
 ## Design in Code
 
-![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable4/img/10773_UML_2.png)
+![UML](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable4/img/10773_UML_2.png)
 
 ## Implementation
 
@@ -361,12 +361,12 @@ We expect to see the default view of pdf changed base on the parameter pass in. 
 ```
 http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf
 ```
-![before](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_1.PNG)
+![before](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/img/10773_1.PNG)
 Currently we are going to see above with default setting, but after implementation, we can show below with the view parameter. For example, when fitting horizontally,
 ```
 http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf#page=1&view=FitH
 ```
-![after](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_2.PNG)
+![after](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/img/10773_2.PNG)
 We would see above the same pdf is fitted by width by default.
 
 ## User Guide
@@ -476,3 +476,105 @@ http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Frotation.pdf#page=2&
 Step 3: Observe the PDF is rendered to page 2 and fit vertically
 
 ![Fit to page vertically](./10773/img/10773_fitV_rotation.png)
+
+
+# Unit Testing
+
+The unit test is done using testing framework jasmine, which is located in `test/unit/jasmine-boot.js` and modified for loading PDF.js libraries.
+
+## Instructions
+
+### Step 1
+
+Clone the repository with the changes
+
+### Step 2
+
+Build according to the instructions on the README document
+
+### Step 3
+
+Start the server to use the viewer locally by using `gulp server`
+
+### Step 4
+
+Run the unit tests using the following link:
+```
+http://localhost:8888/test/unit/unit_test.html
+```
+The result of all unit tests will be displyed on the page, with green dot indicating passing and red cross mark indicating failures, as shown in the screenshot.
+
+![Unit test](./img/unit_test.png)
+
+## Mock Object
+
+When testing the modified component related to [issue #10773](https://github.com/mozilla/pdf.js/issues/10773), mock class, `BaseViewerMock`, was added in [`test/unit/test_utils.js`](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/test_utils.js#L178-L222) in order to replicate the behaviour of [`BaseViewer`](https://github.com/CSCD01/pdf.js-team22/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L135).
+
+```
+  class BaseViewerMock {
+    constructor(){
+      this.used = 0;
+      this.x = 0;
+      this.y = 0;
+      this.desName = "";
+    }
+    scrollPageIntoView({
+      pageNumber,
+      destArray = null,
+      allowNegativeOffset = false,
+      ignoreDestinationZoom = false,
+    }){
+      this.used = 1;
+      this.desName = destArray[1].name;
+      var x = destArray[2];
+      this.x = x !== null ? x : 0;
+    } 
+    
+    reset(){
+      this.used = 0;
+      this.x = 0;
+      this.desName = "";
+    }
+
+    getUsed(){
+      return this.used;
+    }
+    
+    getX(){
+      return this.x;
+    }
+
+    getName(){
+      return this.desName;
+    }
+  }
+```
+
+## Test Cases
+
+[1](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L26-L52). Calling mock class to add different fit parameters
+```
+    // Set up PDFLinkService using the mock class
+    pdfLinkService.setHash("page=2&view=FitV,100");
+    expect(pdfViewer.getUsed()).toEqual(1);
+    // Reset the mock object
+    pdfViewer.reset();
+    done();
+```
+
+[2](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L54-L78). If the correct fit parameter is set
+```
+    pdfLinkService.setHash("view=FitH");
+    expect(pdfViewer.getName()).toEqual("FitH");
+    pdfViewer.reset();
+    done();
+```
+
+[3](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L80-L98). If the correct coordinates are set with the given fit parameter
+```
+    pdfLinkService.setHash("page=2&view=FitH,0");
+    expect(pdfViewer.getName()).toEqual("FitH");
+    expect(pdfViewer.getX()).toEqual(0);
+    pdfViewer.reset();
+    done();
+```

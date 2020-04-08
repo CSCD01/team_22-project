@@ -1,6 +1,6 @@
 # Feature
 
-[6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
+[6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/6347.md)
 
 This is our initial choice for deliverable 4. As we see many people commentted this would be an useful feature.
 
@@ -24,7 +24,7 @@ Add the ability to handle images within a PDF document as if they were images in
 
 ## Design of Code
 
-![UML](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/6347_UML.png)
+![UML](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/img/6347_UML.png)
 
 
 ## User Guide
