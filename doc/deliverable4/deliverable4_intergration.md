@@ -176,7 +176,7 @@ We spent great amount of time investigating the potential solution for this feat
 
 [10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/10773.md)
 
-We switched to this feature after [#6347](./Documentaion_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
+We switched to this feature after [#6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable4/Documentation_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
 
 ## Description
 
@@ -198,7 +198,7 @@ Set the view of the displayed page, using the keyword values defined in the PDF 
 
 Steps to get the problem:
 
-1. Check out the repository, run npm install and gulp server, then navigate the viewer to a PDF that isn't automatically zoomed in to fill your viewport width on viewer initialization (http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf works for me).
+1. Check out the repository, run npm install and gulp server, then navigate the viewer to a PDF that isn't automatically zoomed in to fill your viewport width on viewer initialization.
 2. Append #page=1&view=FitH to the URL in the address bar, and reload the page.
 
 Currently, the view parameter in PDF URL fragment identifiers is currently unsupported.
