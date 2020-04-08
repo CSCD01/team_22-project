@@ -1,6 +1,8 @@
-# Unit Testing Instructions
+# Unit Testing
 
 The unit test is done using testing framework jasmine, which is located in `test/unit/jasmine-boot.js` and modified for loading PDF.js libraries.
+
+## Instructions
 
 ### Step 1
 
@@ -24,7 +26,7 @@ The result of all unit tests will be displyed on the page, with green dot indica
 
 ![Unit test](./img/unit_test.png)
 
-## Test cases
+## Mock Object
 
 When testing the modified component related to [issue #10773](https://github.com/mozilla/pdf.js/issues/10773), mock class, `BaseViewerMock`, was added in [`test/unit/test_utils.js`](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/test_utils.js#L178-L222) in order to replicate the behaviour of [`BaseViewer`](https://github.com/CSCD01/pdf.js-team22/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L135).
 
@@ -67,3 +69,6 @@ When testing the modified component related to [issue #10773](https://github.com
     }
   }
 ```
+
+## Test Cases
+
