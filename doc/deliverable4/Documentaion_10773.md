@@ -173,7 +173,7 @@ Finally, add the fixed feature into [test/pdfs/.gitignore](https://github.com/mo
 
 ## User Guide
 
-After the implementation is done, we will have moew options in 
+After the implementation is done, we will have more options in 
 
 <img src="./img/option_1.png" alt="Option" width="300"/>
 
