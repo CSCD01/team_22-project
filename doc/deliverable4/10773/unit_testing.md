@@ -22,4 +22,4 @@ http://localhost:8888/test/unit/unit_test.html
 ```
 The result of all unit tests will be displyed on the page, with green dot indicating passing and red cross mark indicating failures, as shown in the screenshot.
 
-![Unit test](../img/unit_test.png)
+![Unit test](./img/unit_test.png)
