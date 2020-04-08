@@ -2,11 +2,11 @@
 
 Changing of mode of view by adding "view" parameter in URL.
 
-----------------------------------------------------
-
 ## Expected Behaviour
 1. Append view parameter to the URL.
 2. Reload the page, the PDF is rendered with specified view.
+
+----------------------------------------------------
 
 ## Acceptance Testing
 ### Setting up:
@@ -24,18 +24,24 @@ http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf
 
 Step 5: Observe the PDF is rendered to the first page with the default view 'Automatic Zoom'
 
-### 1. Fit Parameter
-#### a. Fit Horizontally
+![Open PDF](./img/10773_open_pdf.png)
+
+### 1. Fit parameter
+#### a. Fit horizontally
 
 Step 1: Append Fit parameter, `#view=FitH`, to the URL and reload
 
 Step 2: Observe the PDF is rendered to Fit horizontally with the page width
+
+![Fit horizontally](./img/10773_fitH.png)
 
 #### b. Fit vertically
 
 Step 1: Change the Fit parameter in the URL into `#view=FitV` and reload
 
 Step 2: Observe the PDF is rendered to fit vertically
+
+![Fit vertically](./img/10773_open_pdf.png)
 
 #### c. Fit to page 
 
