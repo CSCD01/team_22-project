@@ -72,3 +72,8 @@ When testing the modified component related to [issue #10773](https://github.com
 
 ## Test Cases
 
+[1](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L26-L52). Calling mock class to add different fit parameters
+
+[2](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L54-L78). If the correct fit parameter is set
+
+[3](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L80-L98). If the correct coordinates are set with the given fit parameter
