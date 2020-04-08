@@ -2,8 +2,8 @@
 
 ## Documentation of fixed features
 
-- Issue [6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable4/Documentation_6347.md)
-- Issue [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable4/Documentaion_10773.md)
+- Issue [6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable4/Documentation_6347.md)
+- Issue [10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable4/Documentaion_10773.md)
 
 ## Software development process
 
