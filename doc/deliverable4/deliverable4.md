@@ -9,6 +9,6 @@
 
 - [Document](./Software_process.md)
 
-## Intergration file with everything
+## Intergration file with everything included
 
 - [Deliverable 4](./deliverable4_intergration.md)
