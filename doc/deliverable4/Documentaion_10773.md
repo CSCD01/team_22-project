@@ -198,3 +198,4 @@ We would see above the same pdf is fitted by width by default.
 ## User Guide
 
 After the implementation is done, we will have options in url such as append `#page=1&view=FitV,100` to fit the page vertically with 100px from top.
+
