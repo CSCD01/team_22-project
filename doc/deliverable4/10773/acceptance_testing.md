@@ -29,7 +29,7 @@ Step 5: Observe the PDF is rendered to the first page with the default view 'Aut
 ### 1. Fit parameter
 #### a. Fit horizontally
 
-Step 1: Append Fit parameter, `#view=FitH`, to the URL and reload
+Step 1: Append Fit parameter, `#view=FitH,100`, to the URL and reload
 
 Step 2: Observe the PDF is rendered to Fit horizontally with the page width
 
@@ -53,19 +53,23 @@ Step 2: Observe the PDF is rendered to fit to page
 
 ### 2. Fit to a specific page with fit parameter
 
+When rendering to specifc pages, having mentioned in [issue #2843](https://github.com/mozilla/pdf.js/issues/2843), the zoom parameters are not correctly implemented and need to be set to specific values for the page to display correctly, therefore, zoom parameters are also used in these cases.
+
 #### a. Fit to a specific page horizontally
 
-Step 1: Change the Fit parameter in the URL into `#page=2&view=FitH` and reload
+Step 1: Change the Fit parameter in the URL into `#page=2&view=FitH,975` and reload
 
 Step 2: Observe the PDF is rendered to page 2 and fit horizontally
 
+![Fit to page horizontally](./img/10773_fitH_795.png)
+
 #### b. Fit to a specific page vertically
 
-Step 1: Change the Fit parameter in the URL into `#page=1&view=FitV,100` and reload
+Step 1: Change the Fit parameter in the URL into `#page=5&view=FitV,100` and reload
 
-Step 2: Observe the PDF is rendered to page 1 and fit vertically
+Step 2: Observe the PDF is rendered to page 5 and fit vertically
 
-![Fit to page](./img/10773_fitV_100.png)
+![Fit to page vertically](./img/10773_fitV_100.png)
 
 ### 3. Fit to a specific page with set parameter when opening the PDF
 
@@ -75,10 +79,12 @@ Step 1: Close the previously opened test file
 
 Step 2: Re-open the test file with a fit parameter in the URL, such as
 ```
-http://localhost:8888/web/viewer.html?file=%2Fweb%2Fcompressed.tracemonkey-pldi-09.pdf#page=3&view=FitH
+http://localhost:8888/web/viewer.html?file=%2Fweb%2Fcompressed.tracemonkey-pldi-09.pdf#page=3&view=FitH,795
 ```
 
 Step 3: Observe the PDF is rendered to page 3 and fit horizontally
+
+![Fit to page horizontally](./img/10773_fitH_795_page3.png)
 
 #### b. Fit vertically
 
@@ -90,3 +96,5 @@ http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Frotation.pdf#page=2&
 ```
 
 Step 3: Observe the PDF is rendered to page 2 and fit vertically
+
+![Fit to page vertically](./img/10773_fitV_rotation.png)
