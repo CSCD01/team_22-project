@@ -49,6 +49,8 @@ Step 1: Change the Fit parameter in the URL into `#view=Fit` and reload
 
 Step 2: Observe the PDF is rendered to fit to page
 
+![Fit to page](./img/10773_fit.png)
+
 ### 2. Fit to a specific page with fit parameter
 
 #### a. Fit to a specific page horizontally
@@ -59,9 +61,11 @@ Step 2: Observe the PDF is rendered to page 2 and fit horizontally
 
 #### b. Fit to a specific page vertically
 
-Step 1: Change the Fit parameter in the URL into `#page=5&view=FitV` and reload
+Step 1: Change the Fit parameter in the URL into `#page=1&view=FitV,100` and reload
 
-Step 2: Observe the PDF is rendered to page 5 and fit vertically
+Step 2: Observe the PDF is rendered to page 1 and fit vertically
+
+![Fit to page](./img/10773_fitV_100.png)
 
 ### 3. Fit to a specific page with set parameter when opening the PDF
 
