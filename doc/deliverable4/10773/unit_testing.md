@@ -22,7 +22,7 @@ Run the unit tests using the following link:
 ```
 http://localhost:8888/test/unit/unit_test.html
 ```
-The result of all unit tests will be displyed on the page, with green dot indicating passing and red cross mark indicating failures, as shown in the screenshot.
+The result of all unit tests will be displayed on the page, with green dot indicating passing and red cross mark indicating failures, as shown in the screenshot.
 
 ![Unit test](./img/unit_test.png)
 
@@ -72,7 +72,7 @@ When testing the modified component related to [issue #10773](https://github.com
 
 ## Test Cases
 
-[1](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L26-L52). Calling mock class to add different fit parameters
+[Case 1. Calling mock class to add different fit parameters](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L26-L52)
 ```
     // Set up PDFLinkService using the mock class
     pdfLinkService.setHash("page=2&view=FitV,100");
@@ -82,7 +82,7 @@ When testing the modified component related to [issue #10773](https://github.com
     done();
 ```
 
-[2](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L54-L78). If the correct fit parameter is set
+[Case 2. Make sure the correct fit parameter is set](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L54-L78)
 ```
     pdfLinkService.setHash("view=FitH");
     expect(pdfViewer.getName()).toEqual("FitH");
@@ -90,7 +90,7 @@ When testing the modified component related to [issue #10773](https://github.com
     done();
 ```
 
-[3](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L80-L98). If the correct coordinates are set with the given fit parameter
+[Case 3. Make sure the correct coordinates are set with the given fit parameter](https://github.com/CSCD01/pdf.js-team22/blob/47a40309ccea149f6441dd504048aa0057872126/test/unit/10773_unit_test.js#L80-L98)
 ```
     pdfLinkService.setHash("page=2&view=FitH,0");
     expect(pdfViewer.getName()).toEqual("FitH");
