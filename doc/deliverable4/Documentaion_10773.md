@@ -2,7 +2,7 @@
 
 [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
 
-We switched to this feature after `#6347`. We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
+We switched to this feature after [#6347](./Documentaion_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
 
 ## Description
 
@@ -34,7 +34,7 @@ What we did is that, add support for "view" parameter for opening PDF files on w
 ### 2843
 According to the open parameter specification, [link](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_open_parameters_v9.pdf#page=6), the zoom parameter should be implemented as: `zoom=scale,left,top`, with the interpretation:
 
-> Scroll values _left_ and _top_ are in a coordinate system where 0,0 represents the top left corner of the visible page, regardless of document rotation.
+> Scroll values _left_ and _top_ are in a coordinate system where 0,0 which represents the top left corner of the visible page, regardless of document rotation.
 
 This is not the case in pdf.js, which is a problem if you try opening the following:
 http://mozilla.github.io/pdf.js/web/viewer.html#page=2&zoom=auto,0,0
@@ -42,8 +42,8 @@ http://mozilla.github.io/pdf.js/web/viewer.html#page=2&zoom=auto,0,0
 * Expected result: The document should open at the top of page 2, as it does with Adobe Reader.
 * What actually happens: The document is scrolled down to the top of page 3.
  
-The problem seems to be that in pdf.js the origin in the coordinate system (the one that is exposed to the user) is placed at the bottom left corner. From what I've gathered, pdf.js internally uses a coordinate system placed at the top left corner of the page, so I don't know why it's not working.
-I'm not that familiar with this part of the codebase, but could the issue be here:
+The problem seems to be that in pdf.js, the origin in the coordinate system (the one that is exposed to the user) is placed at the bottom left corner. From what I've gathered, pdf.js internally uses a coordinate system placed at the top left corner of the page, so I don't know why it's not working.
+I'm not so familiar with this part of the codebase, but could be the issue here:
 https://github.com/mozilla/pdf.js/blob/master/src/util.js#L390
 
 
@@ -165,7 +165,7 @@ And here, we also delete the duplicate part in zoom, based on project advisors' 
 Regardless of #2843, the feature for #10773 is now fixed. It meets the PDF standard and the user can set up view to change default fit pattern on web.
 
 ### 2843
-After tons of testing, we find out the issue is that in `base_viewer.js` it's [converting](https://github.com/mozilla/pdf.js/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L885-L890) input point to a from-top-left point.
+After tons of testing, we find out the issue is in `base_viewer.js` it's [converting](https://github.com/mozilla/pdf.js/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L885-L890) input points to a from-top-left point.
 ```
     const boundingRect = [
       pageView.viewport.convertToViewportPoint(x, y),
@@ -180,7 +180,7 @@ As discussed in [comment](https://github.com/mozilla/pdf.js/issues/10773#issueco
 
 After that, the other solution we can think about is to have another wrapper out side [base_viewer.js/scrollPageIntoView](https://github.com/mozilla/pdf.js/blob/4fe92605b75d7e0952738b7f1575d78145b69aeb/web/base_viewer.js#L774) to be use by `zoom` and `view` only, but that's still not elegent enough.
 
-We are still keep tracking with the reviewer to get suggestion on what we can do to make this fix.
+We are still keeping track with the reviewer to get suggestions on what we can do to make this fixed.
 
 ## Acceptance Testing
 We expect to see the default view of pdf changed base on the parameter pass in. This can be tested by running web part locally with gulp server. To verify, for example, by navigating through the url below from browser:
