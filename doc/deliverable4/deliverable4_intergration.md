@@ -36,9 +36,9 @@ We choose the most recent 30 issues related to feature tag in list to review. Ea
 
 There were 3 features we choose to do deep analysis:
 
-- Issue [6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
-- Issue [7442](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/7442.md)
-- Issue [10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
+- Issue [6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/6347.md)
+- Issue [7442](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/7442.md)
+- Issue [10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/10773.md)
 
 #### Reason: 
 The reason we choose these 3 selected issues to analysis is shown below.
@@ -133,7 +133,7 @@ The screenshot of our team's Kanban board in this step is attached below.
 
 # Feature 6347
 
-[6347](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/6347.md)
+[6347](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/6347.md)
 
 This is our initial choice for deliverable 4. As we see many people commentted this would be an useful feature.
 
