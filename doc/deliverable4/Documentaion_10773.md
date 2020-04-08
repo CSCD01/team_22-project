@@ -187,12 +187,12 @@ We expect to see the default view of pdf changed base on the parameter pass in. 
 ```
 http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf
 ```
-![before](./img/10773_1.PNG)
+![before](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_1.PNG)
 Currently we are going to see above with default setting, but after implementation, we can show below with the view parameter. For example, when fitting horizontally,
 ```
 http://localhost:8888/web/viewer.html?file=%2Ftest%2Fpdfs%2Ftracemonkey.pdf#page=1&view=FitH
 ```
-![after](./img/10773_2.PNG)
+![after](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/img/10773_2.PNG)
 We would see above the same pdf is fitted by width by default.
 
 ## User Guide
