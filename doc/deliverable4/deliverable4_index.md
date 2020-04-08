@@ -9,6 +9,10 @@
 
 - [Document](./Software_process.md)
 
+## Acceptance Tests
+
+- [Document](./10773/acceptance_testing.md)
+
 ## Intergration file with everything included
 
 - [Deliverable 4](./deliverable4_intergration.md)
