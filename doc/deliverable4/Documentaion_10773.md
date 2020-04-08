@@ -1,6 +1,6 @@
 # Feature
 
-[10773](https://github.com/CSCD01/team_22-project/blob/Documentaion_process/doc/deliverable3/10773.md)
+[10773](https://github.com/CSCD01/team_22-project/blob/master/doc/deliverable3/10773.md)
 
 We switched to this feature after [#6347](./Documentaion_6347.md). We also tried to fix a related issue related to this feature [#2843](https://github.com/mozilla/pdf.js/issues/2843) during implementation.
 
